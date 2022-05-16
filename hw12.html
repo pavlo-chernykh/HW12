@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function doSum() {
+      let count = 0;
+      return function(a) {
+        return count += a;
+      };
+    }
+
+    const sum = doSum();
+
+    console.log(sum(2));
+    console.log(sum(6));
+    console.log(sum(6));
+
+
+    function createCounter(initCount, step) {
+      
+      let count = initCount;
+      const counter = function() {
+        return count += step;
+      }
+      counter.reset = function() {
+        return count = initCount;
+      }
+      return counter;
+    }
+
+    const counterF = createCounter(2, 3);
+
+    console.log('counter', counterF());
+    console.log('counter', counterF());
+    console.log('reset', counterF.reset());
+    console.log('counter', counterF());
+    console.log('counter', counterF());
+
+  </script>
+</body>
+</html>
